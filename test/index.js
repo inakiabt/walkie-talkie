@@ -3,7 +3,7 @@ var settings = {
   "APP_ID": "your_APP_ID"
 }
 
-var intercomio = require("../intercom").app(settings);
+var intercom = require("../intercom").app(settings);
 
 intercom.users.all(function(code, body){
   console.log(code, body.toString());
