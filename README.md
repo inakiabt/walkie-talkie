@@ -35,7 +35,6 @@ OR, if you just want to start playing with the library run...
     var intercom = require('node-intercom').app(settings);
 
     intercom.users.get('test@example.com',function(code, body){
-      
         // code is the Request Status Code from the API
         // body is the Response Body as a Buffer.
         console.log(code, body.toString());
