@@ -3,14 +3,13 @@ var settings = {
   "APP_ID": "your_APP_ID"
 }
 
-var io = require("../intercom").app(settings);
+var intercomio = require("../intercom").app(settings);
 
-
-io.users.all(function(code, body){
+intercom.users.all(function(code, body){
   console.log(code, body.toString());
 });
 
-io.users.get("rob@chloi.io", function(code, body){
+intercom.users.get("brandon@brandonb.io", function(code, body){
   console.log(code, body.toString());
 });
 
@@ -23,7 +22,7 @@ var data = {
   "last_seen_user_agent" : "ie6"
 }
 
-io.users.post(data, function(code, body){
+intercom.users.post(data, function(code, body){
   console.log(code, body.toString());
 });
 
@@ -32,7 +31,7 @@ var data = {
   "name" : "Jorgie"
 }
 
-io.users.put(data, function(code, body){
+intercom.users.put(data, function(code, body){
   console.log(code, body.toString());
 });
 
@@ -40,6 +39,6 @@ var data = {
   "email": "jorge@chloi.io"
 }
 
-io.users.delete(data, function(code, body){
+intercom.users.delete(data, function(code, body){
   console.log(code, body.toString());
 });

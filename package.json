@@ -1,22 +1,26 @@
 {
   "name": "node-intercom",
-  "version": "0.0.4",
-  "description": "intercom.io interface",
+  "version": "0.0.5",
+  "description": "intercom.io interface for nodejs",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "request": "2.9.153"
+    "request": "latest"
   },
-  "repository": { 
+  "repository": {
     "type": "git",
-    "url": "https://github.com/silentrob/node-intercom.git"
+    "url": "https://github.com/brandonb927/node-intercom.git"
   },
   "author": "Rob Ellis",
+  "contributors": [{
+    "name": "Brandon Brown",
+    "email": "brandon@brandonb.io"
+  }],
   "main": "./intercom.js",
   "licenses" : [
-    { 
+    {
       "type" : "MIT",
       "url" : "https://raw.github.com/sintaxi/node-dbox/master/README.md"
     }
