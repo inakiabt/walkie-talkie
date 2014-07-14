@@ -1,27 +1,6 @@
 var request = require("request");
 var qs      = require("querystring");
 
-function parseJSON(str) {
-  var obj;
-
-  try {
-    obj = JSON.parse(str);
-  } catch (e) {
-    return obj = {};
-  }
-
-  return obj;
-}
-
-var set_args = function (options, args) {
-  for(var attr in args) {
-    if(args.hasOwnProperty(attr)){
-      options[attr] = args[attr];
-    }
-  }
-
-  return options;
-};
 
 exports.app = function(config) {
 

@@ -16,15 +16,15 @@ information...
       }
     }
 
-Then run the following command using npm...
+Then run the following command using npm
 
-    npm install
+    npm install && npm install mocha -g
 
-OR, if you just want to start playing with the library run...
+OR, if you just want to start playing with the library run
 
     npm install node-intercom
-    
-    
+
+
 ## API Overview
 
     var settings = {
@@ -40,13 +40,20 @@ OR, if you just want to start playing with the library run...
         console.log(code, body.toString());
     });
 
-See test/index.js for more examples.
+See tests/index.js for more examples.
+
+## Testing
+
+Mocha and chai are used for testing, so add them to the `tests` folder. To run your tests, use
+
+    npm test
 
 
 ## Missing or TODO
 
   - Impressions API
   - Message Threads API
+
 
 ## License
 
@@ -72,4 +79,4 @@ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
 HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-OTHER DEALINGS IN THE SOFTWARE.    
+OTHER DEALINGS IN THE SOFTWARE.
