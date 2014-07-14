@@ -14,11 +14,11 @@ exports.app = function(config) {
   return {
     users: {
       all: function(args, cb) {
-        if(cb == null) {
+        if(cb === null) {
           cb = args;
         }
 
-        var args = {
+        args = {
           "method": "GET",
           "url": gen_api_url("users"),
           "headers": json_headers
@@ -35,7 +35,7 @@ exports.app = function(config) {
       },
 
       get: function(user_id_or_email, cb) {
-        var key = (user_id_or_email.indexOf("@") == -1) ? "user_id" : "email";
+        var key = (user_id_or_email.indexOf("@") === -1) ? "user_id" : "email";
 
         var args = {
           "method": "GET",
@@ -109,6 +109,27 @@ exports.app = function(config) {
     },
 
     tags: {
+      all: function(args, cb) {
+        if(cb === null) {
+          cb = args;
+        }
+
+        args = {
+          "method": "GET",
+          "url": gen_api_url("tags"),
+          "headers": json_headers
+        };
+
+        return request(args, function(e, r, body) {
+          if(e) {
+            console.dir('ALL failed with error: ' + JSON.stringify(e));
+            cb(null, null, null);
+          } else {
+            cb(r.statusCode, body);
+          }
+        });
+      },
+
       get: function(tag, cb) {
         var args = {
           "method": "GET",
@@ -160,7 +181,24 @@ exports.app = function(config) {
             cb(r.statusCode, body);
           }
         });
+      },
+
+      delete: function(tag_id, cb) {
+        var args = {
+          "method": "DELETE",
+          "url": gen_api_url("tags/" + tag_id),
+          "headers": json_headers
+        };
+
+        return request(args, function(e, r, body) {
+          if(e) {
+            console.dir('DELETE failed with error: ' + JSON.stringify(e));
+            cb(null, null, null);
+          } else {
+            cb(r.statusCode, body);
+          }
+        });
       }
     }
-  }
-}
+  };
+};
