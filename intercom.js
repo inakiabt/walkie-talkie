@@ -53,7 +53,7 @@ exports.app = function(config) {
         });
       },
 
-      post: function(data, cb) {
+      create: function(data, cb) {
         var args = {
           "method": "POST",
           "url": gen_api_url("users"),
@@ -71,7 +71,7 @@ exports.app = function(config) {
         });
       },
 
-      put: function(data, cb) {
+      update: function(data, cb) {
         var args = {
           "method": "PUT",
           "url": gen_api_url("users"),
@@ -147,7 +147,7 @@ exports.app = function(config) {
         });
       },
 
-      post: function(data, cb) {
+      create: function(data, cb) {
         var args = {
           "method": "POST",
           "url": gen_api_url("tags"),
@@ -165,7 +165,7 @@ exports.app = function(config) {
         });
       },
 
-      put: function(data, cb) {
+      update: function(data, cb) {
         var args = {
           "method": "PUT",
           "url": gen_api_url("tags"),
