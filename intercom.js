@@ -1,6 +1,5 @@
 var request = require("request");
 
-
 exports.app = function(config) {
 
   var gen_api_url = function(args) {
@@ -9,7 +8,7 @@ exports.app = function(config) {
 
   var json_headers = {
     "Authorization": "Basic " + new Buffer(config.app_id + ":" + config.api_key).toString("base64"),
-    "Content-Type": "application/json"
+    "Accept": "application/json"
   };
 
   return {
@@ -40,7 +39,7 @@ exports.app = function(config) {
 
         var args = {
           "method": "GET",
-          "url": gen_api_url("users/?"+ key + "=" + encodeURIComponent(user_id_or_email)),
+          "url": gen_api_url("users?"+ key + "=" + encodeURIComponent(user_id_or_email)),
           "headers": json_headers
         };
 
@@ -113,7 +112,7 @@ exports.app = function(config) {
       get: function(tag, cb) {
         var args = {
           "method": "GET",
-          "url": gen_api_url("tags/?name=" + tag),
+          "url": gen_api_url("tags?name=" + tag),
           "headers": json_headers
         };
 
