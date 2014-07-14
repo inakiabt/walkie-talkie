@@ -1,5 +1,6 @@
 var request = require("request");
 
+
 exports.app = function(config) {
 
   var gen_api_url = function(args) {
@@ -8,7 +9,8 @@ exports.app = function(config) {
 
   var json_headers = {
     "Authorization": "Basic " + new Buffer(config.app_id + ":" + config.api_key).toString("base64"),
-    "Accept": "application/json"
+    "Accept": "application/json",
+    "Content-type": "application/json"
   };
 
   return {
@@ -147,12 +149,11 @@ exports.app = function(config) {
         });
       },
 
-      create: function(data, cb) {
+      create: function(tag, cb) {
         var args = {
           "method": "POST",
-          "url": gen_api_url("tags"),
-          "headers": json_headers,
-          "body": JSON.stringify(data)
+          "url": gen_api_url("tags?name=" + tag),
+          "headers": json_headers
         };
 
         return request(args, function(e, r, body) {

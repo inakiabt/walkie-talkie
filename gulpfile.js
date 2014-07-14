@@ -16,7 +16,7 @@ gulp.task('lint', function() {
 });
 
 gulp.task('mocha', function() {
-  gulp.src('./test/*.js')
+  return gulp.src('./test/*.js')
     .pipe(mocha({ reporter: 'nyan' }));
 });
 
@@ -39,7 +39,7 @@ gulp.task('tag', ['bump-version'], function() {
 });
 
 gulp.task('npm', ['tag'], function(done) {
-  require('child_process')
+  return require('child_process')
     .spawn('npm', ['publish'], { stdio: 'inherit' })
     .on('close', done);
 });
