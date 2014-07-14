@@ -1,4 +1,5 @@
 # Node Intercom
+
 An interface for speaking to intercom.io API. There complete docs can be found here - http://docs.intercom.io/api
 
 
@@ -16,11 +17,11 @@ information...
       }
     }
 
-Then run the following command using npm
+Then run the following command using `npm`
 
-    npm install && npm install mocha -g
+    npm install && npm install mocha gulp -g
 
-OR, if you just want to start playing with the library run
+OR if you just want to start playing with the library in your project, run
 
     npm install node-intercom
 
@@ -28,8 +29,8 @@ OR, if you just want to start playing with the library run
 ## API Overview
 
     var settings = {
-      "API_KEY": "your_API_key",
-      "APP_ID": "your_APP_ID"
+      "api_key": "your_API_key",
+      "app_id": "your_APP_ID"
     }
 
     var intercom = require('node-intercom').app(settings);
