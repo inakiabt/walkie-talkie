@@ -41,19 +41,30 @@ OR if you just want to start playing with the library in your project, run
         console.log(code, body.toString());
     });
 
-See tests/index.js for more examples.
+See the tests folder for more examples.
 
-## Testing
+## Contributing and Testing
 
-Mocha and chai are used for testing, so add them to the `tests` folder. To run your tests, use
+Contributing bug fixes and features is very welcome! If you want to contribute to the project, you'll need to run create and run tests for anything that needs it.
+and Mocha is used for testing so add your tests to the `tests` folder, but first you'll need to create a `config.json` file in the root of the tests folder and fill it with your credentials.
 
-    npm test
+    {
+      "settings": {
+        "app_id": "APP_ID_HERE",
+        "api_key": "API_KEY_HERE"
+      }
+    }
+
+
+Gulp is used for running tasks. To run the tests, run
+
+    gulp test
 
 
 ## Missing or TODO
 
   - Impressions API
-  - Message Threads API
+  - Events API
 
 
 ## License
