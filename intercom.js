@@ -1,11 +1,14 @@
 var request = require("request");
-var qs      = require("querystring");
 
 
 exports.app = function(config) {
 
   var sign = function() {
     return "Basic " + new Buffer(config.app_id + ":" + config.api_key).toString("base64");
+  };
+
+  var gen_api_url = function(args) {
+    return "https://api.intercom.io/v1/" + args;
   };
 
   var json_headers = {
@@ -22,7 +25,7 @@ exports.app = function(config) {
 
         var args = {
           "method": "GET",
-          "url": "https://api.intercom.io/v1/users",
+          "url": gen_api_url("users"),
           "headers": json_headers
         };
 
@@ -41,7 +44,7 @@ exports.app = function(config) {
 
         var args = {
           "method": "GET",
-          "url": "https://api.intercom.io/v1/users/?"+ key + "=" + encodeURIComponent(user_id_or_email),
+          "url": gen_api_url("users/?"+ key + "=" + encodeURIComponent(user_id_or_email)),
           "headers": json_headers
         };
 
@@ -58,7 +61,7 @@ exports.app = function(config) {
       post: function(data, cb) {
         var args = {
           "method": "POST",
-          "url": "https://api.intercom.io/v1/users/",
+          "url": gen_api_url("users"),
           "headers": json_headers,
           "body": JSON.stringify(data)
         };
@@ -76,7 +79,7 @@ exports.app = function(config) {
       put: function(data, cb) {
         var args = {
           "method": "PUT",
-          "url": "https://api.intercom.io/v1/users/",
+          "url": gen_api_url("users"),
           "headers": json_headers,
           "body": JSON.stringify(data)
         };
@@ -92,11 +95,9 @@ exports.app = function(config) {
       },
 
       delete: function(data, cb) {
-        var params = qs.stringify(data);
-
         var args = {
           "method": "DELETE",
-          "url": "https://api.intercom.io/v1/users/",
+          "url": gen_api_url("users"),
           "headers": json_headers,
           "body": JSON.stringify(data)
         };
@@ -116,7 +117,7 @@ exports.app = function(config) {
       get: function(tag, cb) {
         var args = {
           "method": "GET",
-          "url": "https://api.intercom.io/v1/tags/?name=" + tag,
+          "url": gen_api_url("tags/?name=" + tag),
           "headers": json_headers
         };
 
@@ -133,7 +134,7 @@ exports.app = function(config) {
       post: function(data, cb) {
         var args = {
           "method": "POST",
-          "url": "https://api.intercom.io/v1/tags/",
+          "url": gen_api_url("tags"),
           "headers": json_headers,
           "body": JSON.stringify(data)
         };
@@ -151,7 +152,7 @@ exports.app = function(config) {
       put: function(data, cb) {
         var args = {
           "method": "PUT",
-          "url": "https://api.intercom.io/v1/tags/",
+          "url": gen_api_url("tags"),
           "headers": json_headers,
           "body": JSON.stringify(data)
         };
