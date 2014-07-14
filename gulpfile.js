@@ -20,8 +20,8 @@ gulp.task('mocha', function() {
     .pipe(mocha({ reporter: 'nyan' }));
 });
 
-gulp.task('bump-version', ['build-shim'], function() {
-  return gulp.src(['./package.json', './bower.json'])
+gulp.task('bump-version', function() {
+  return gulp.src(['./package.json'])
     .pipe(bump())
     .pipe(gulp.dest('./'));
 });
