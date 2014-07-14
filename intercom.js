@@ -5,8 +5,13 @@ var qs      = require("querystring");
 exports.app = function(config) {
 
   var sign = function() {
-    return "Basic " + new Buffer(config.APP_ID + ":" + config.API_KEY).toString("base64");
-  }
+    return "Basic " + new Buffer(config.app_id + ":" + config.api_key).toString("base64");
+  };
+
+  var json_headers = {
+    "Authorization": sign(),
+    "Content-Type": "application/json"
+  };
 
   return {
     users: {
@@ -17,11 +22,8 @@ exports.app = function(config) {
 
         var args = {
           "method": "GET",
-          "url": " https://api.intercom.io/v1/users",
-          "headers": {
-            "Authorization": sign(),
-            'Content-Type': 'application/json'
-          }
+          "url": "https://api.intercom.io/v1/users",
+          "headers": json_headers
         };
 
         return request(args, function(e, r, body) {
@@ -40,10 +42,7 @@ exports.app = function(config) {
         var args = {
           "method": "GET",
           "url": "https://api.intercom.io/v1/users/?"+ key + "=" + encodeURIComponent(user_id_or_email),
-          "headers": {
-            "Authorization": sign(),
-            'Content-Type': 'application/json'
-          }
+          "headers": json_headers
         };
 
         return request(args, function(e, r, body) {
@@ -60,10 +59,7 @@ exports.app = function(config) {
         var args = {
           "method": "POST",
           "url": "https://api.intercom.io/v1/users/",
-          "headers": {
-            "Authorization": sign(),
-            'Content-Type': 'application/json'
-          },
+          "headers": json_headers,
           "body": JSON.stringify(data)
         };
 
@@ -81,10 +77,7 @@ exports.app = function(config) {
         var args = {
           "method": "PUT",
           "url": "https://api.intercom.io/v1/users/",
-          "headers": {
-            "Authorization": sign(),
-            'Content-Type': 'application/json'
-          },
+          "headers": json_headers,
           "body": JSON.stringify(data)
         };
 
@@ -104,10 +97,7 @@ exports.app = function(config) {
         var args = {
           "method": "DELETE",
           "url": "https://api.intercom.io/v1/users/",
-          "headers": {
-            "Authorization": sign(),
-            'Content-Type': 'application/json'
-          },
+          "headers": json_headers,
           "body": JSON.stringify(data)
         };
 
@@ -127,10 +117,7 @@ exports.app = function(config) {
         var args = {
           "method": "GET",
           "url": "https://api.intercom.io/v1/tags/?name=" + tag,
-          "headers": {
-            "Authorization": sign(),
-            'Content-Type': 'application/json'
-          }
+          "headers": json_headers
         };
 
         return request(args, function(e, r, body) {
@@ -147,10 +134,7 @@ exports.app = function(config) {
         var args = {
           "method": "POST",
           "url": "https://api.intercom.io/v1/tags/",
-          "headers": {
-            "Authorization": sign(),
-            'Content-Type': 'application/json'
-          },
+          "headers": json_headers,
           "body": JSON.stringify(data)
         };
 
@@ -168,10 +152,7 @@ exports.app = function(config) {
         var args = {
           "method": "PUT",
           "url": "https://api.intercom.io/v1/tags/",
-          "headers": {
-            "Authorization": sign(),
-            'Content-Type': 'application/json'
-          },
+          "headers": json_headers,
           "body": JSON.stringify(data)
         };
 
