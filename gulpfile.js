@@ -22,7 +22,7 @@ gulp.task('mocha', function() {
 
 gulp.task('bump-version', ['build-shim'], function() {
   return gulp.src(['./package.json', './bower.json'])
-    .pipe(bumpVersion())
+    .pipe(bump())
     .pipe(gulp.dest('./'));
 });
 
