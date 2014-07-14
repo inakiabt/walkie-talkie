@@ -4,7 +4,7 @@ var request = require("request");
 exports.app = function(config) {
 
   var gen_api_url = function(args) {
-    return "https://api.intercom.io/v1/" + args;
+    return "https://api.intercom.io/" + args;
   };
 
   var json_headers = {
