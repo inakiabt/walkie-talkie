@@ -2,9 +2,9 @@
   "name": "node-intercom",
   "version": "0.0.5",
   "description": "intercom.io interface for nodejs",
-  "main": "index.js",
+  "main": "./intercom.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --reporter spec"
   },
   "dependencies": {
     "request": "latest"
@@ -14,15 +14,20 @@
     "url": "https://github.com/brandonb927/node-intercom.git"
   },
   "author": "Rob Ellis",
-  "contributors": [{
-    "name": "Brandon Brown",
-    "email": "brandon@brandonb.io"
-  }],
-  "main": "./intercom.js",
-  "licenses" : [
+  "contributors": [
     {
-      "type" : "MIT",
-      "url" : "https://raw.github.com/sintaxi/node-dbox/master/README.md"
+      "name": "Brandon Brown",
+      "email": "brandon@brandonb.io"
     }
-  ]
+  ],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://raw.github.com/sintaxi/node-dbox/master/README.md"
+    }
+  ],
+  "devDependencies": {
+    "chai": "^1.9.1",
+    "mocha": "^1.20.1"
+  }
 }
