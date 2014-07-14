@@ -3,16 +3,12 @@ var request = require("request");
 
 exports.app = function(config) {
 
-  var sign = function() {
-    return "Basic " + new Buffer(config.app_id + ":" + config.api_key).toString("base64");
-  };
-
   var gen_api_url = function(args) {
     return "https://api.intercom.io/v1/" + args;
   };
 
   var json_headers = {
-    "Authorization": sign(),
+    "Authorization": "Basic " + new Buffer(config.app_id + ":" + config.api_key).toString("base64"),
     "Content-Type": "application/json"
   };
 
