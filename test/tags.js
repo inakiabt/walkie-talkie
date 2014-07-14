@@ -21,24 +21,23 @@ describe('Intercom Tags', function() {
   it('creates a tag and returns a response', function() {
     intercom.tags.create("social Media", function(code, body) {
       console.log(code + ': ' + body);
-      // console.log(body.id);
-      // tag_id = body.id;
+      tag_id = body.id;
     });
   });
 
-  // it('updates a tag and returns a response', function() {
-  //   intercom.tags.update({
-  //     "id"   : tag_id,
-  //     "name" : "social media",
-  //   }, function(code, body) {
-  //     console.log(code + ': ' + body);
-  //   });
-  // });
+  it('updates a tag and returns a response', function() {
+    intercom.tags.update({
+      "id"   : tag_id,
+      "name" : "social media",
+    }, function(code, body) {
+      console.log(code + ': ' + body);
+    });
+  });
 
-  // it('deletes a tag by the id and returns a response', function() {
-  //   intercom.tags.delete("", function(code, body) {
-  //     console.log(code + ': ' + body);
-  //   });
-  // });
+  it('deletes a tag by the id and returns a response', function() {
+    intercom.tags.delete("", function(code, body) {
+      console.log(code + ': ' + body);
+    });
+  });
 
 });

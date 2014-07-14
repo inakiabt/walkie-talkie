@@ -13,7 +13,7 @@ information...
       "name": "yourapplication",
       "version": "0.1.0",
       "dependencies": {
-        "node-intercom": "0.0.4"
+        "node-intercom": "0.0.7"
       }
     }
 
