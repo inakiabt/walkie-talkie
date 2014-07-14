@@ -22,10 +22,6 @@
   "devel"         : true,   // Allow developments statements e.g. `console.log();`.
 
 
-  "strict"        : true,  // Require `use strict` pragma  in every file.
-  "globalstrict"  : false,  // Allow global "use strict" (also enables 'strict').
-
-
   // The Good Parts.
   "laxbreak"      : true,   // Tolerate unsafe line breaks e.g. `return [\n] x` without semicolons.
   "boss"          : false,  // Tolerate assignments inside if, for & while. Usually conditions & loops are for comparison, not assignments.
