@@ -1,29 +1,13 @@
 # Walkie-Talkie
 
-An interface for speaking to intercom.io API. There complete docs can be found here - http://docs.intercom.io/api
+An interface for speaking to intercom.io API. There complete docs can be found here - http://doc.intercom.io/api/
 
 
 ## Installation
 
-I always recommend you bundle your dependencies with your application. To do
-this, create a `package.json` file in the root of your project with the minimum
-information...
+To start playing with the library in your project, run
 
-    {
-      "name": "yourapplication",
-      "version": "0.1.0",
-      "dependencies": {
-        "walkie-talkie": "0.0.7"
-      }
-    }
-
-Then run the following command using `npm`
-
-    npm install && npm install -g mocha gulp
-
-OR if you just want to start playing with the library in your project, run
-
-    npm install walkie-talkie
+    npm install walkie-talkie --save
 
 
 ## API Overview
@@ -47,7 +31,6 @@ Walkie-Talkie supports the following Intercom.io API methods:
     + intercom.users.delete(email_or_id, [callback])
 - Tags (intercom.tags)
     + intercom.tags.all([args, callback])
-    + intercom.tags.get(tag, [callback])
     + intercom.tags.create(tag, [callback])
     + intercom.tags.update(Object, [callback])
     + intercom.tags.delete(tag, [callback])
@@ -65,7 +48,13 @@ See the tests folder for more examples.
 ## Contributing and Testing
 
 Contributing bug fixes and features is very welcome! If you want to contribute to the project, you'll need to run create and run tests for anything that needs it.
-and Mocha is used for testing so add your tests to the `tests` folder, but first you'll need to create a `config.json` file in the root of the tests folder and fill it with your credentials.
+and Mocha is used for testing so add your tests to the `test` folder, but first you'll need to create a `config.json` file in the root of the tests folder and fill it with your credentials.
+
+Run
+
+    npm install && npm install -g mocha gulp
+
+then create your `config.json` in the `test` folder
 
     {
       "settings": {
@@ -74,8 +63,7 @@ and Mocha is used for testing so add your tests to the `tests` folder, but first
       }
     }
 
-
-Gulp is used for running tasks. To run the tests, run
+then you can run the tests
 
     gulp test
 
