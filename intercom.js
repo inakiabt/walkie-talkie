@@ -25,7 +25,7 @@ exports.app = function(config) {
 
         return request(args, function(e, r, body) {
           if(e) {
-            console.dir('ALL failed with error: ' + JSON.stringify(e));
+            console.dir('users all failed with error: ' + JSON.stringify(e));
             cb(null, null, null);
           } else {
             cb(r.statusCode, JSON.parse(body));
@@ -47,7 +47,7 @@ exports.app = function(config) {
 
         return request(args, function(e, r, body) {
           if(e) {
-            console.dir('GET failed with error: ' + JSON.stringify(e));
+            console.dir('user get failed with error: ' + JSON.stringify(e));
             cb(null, null, null);
           } else {
             cb(r.statusCode, JSON.parse(body));
@@ -69,7 +69,7 @@ exports.app = function(config) {
 
         return request(args, function(e, r, body) {
           if(e) {
-            console.dir('POST failed with error: ' + JSON.stringify(e));
+            console.dir('user create failed with error: ' + JSON.stringify(e));
             cb(null, null, null);
           } else {
             cb(r.statusCode, JSON.parse(body));
@@ -91,7 +91,7 @@ exports.app = function(config) {
 
         return request(args, function(e, r, body) {
           if(e) {
-            console.dir('PUT failed with error: ' + JSON.stringify(e));
+            console.dir('user update failed with error: ' + JSON.stringify(e));
             cb(null, null, null);
           } else {
             cb(r.statusCode, JSON.parse(body));
@@ -112,7 +112,7 @@ exports.app = function(config) {
 
         return request(args, function(e, r, body) {
           if(e) {
-            console.dir('DELETE failed with error: ' + JSON.stringify(e));
+            console.dir('user delete failed with error: ' + JSON.stringify(e));
             cb(null, null, null);
           } else {
             cb(r.statusCode, JSON.parse(body));
