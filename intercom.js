@@ -79,7 +79,7 @@ exports.app = function(config) {
 
       update: function(data, cb) {
         var args = {
-          "method": "PUT",
+          "method": "POST",
           "url": gen_api_url("users"),
           "headers": {
             "Authorization": sign(),
@@ -100,14 +100,26 @@ exports.app = function(config) {
       },
 
       delete: function(data, cb) {
+        var key;
+        var url;
+
+        if(data.id) {
+          url = gen_api_url("users/" + data.id);
+        } else if(data.email.indexOf("@") === -1) {
+          key = "user_id";
+          url = gen_api_url("users?"+ key + "=" + data.user_id);
+        } else {
+          key = "email";
+          url = gen_api_url("users?"+ key + "=" + encodeURIComponent(data.email));
+        }
+
         var args = {
-          "method": "DELETE",
-          "url": gen_api_url("users"),
+          "method": "GET",
+          "url": url,
           "headers": {
             "Authorization": sign(),
-            "Accept": "application/json",
-          },
-          "body": JSON.stringify(data)
+            "Accept": "application/json"
+          }
         };
 
         return request(args, function(e, r, body) {
@@ -201,7 +213,7 @@ exports.app = function(config) {
             console.dir('tag delete failed with error: ' + JSON.stringify(e));
             cb(null, null, null);
           } else {
-            cb(r.statusCode, JSON.parse(body));
+            cb(r.statusCode);
           }
         });
       }

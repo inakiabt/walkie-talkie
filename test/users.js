@@ -8,9 +8,9 @@ describe('Intercom Users', function() {
   describe('#intercom.users.all()', function() {
     it('should return a list of all users', function(done) {
       intercom.users.all(function(code, body) {
-        // expect(body.type).to.be.a('string');
-        // expect(body.tags).to.be.an('array');
-        console.log(code + ': ' + body.toString());
+        expect(body.type).to.be.equal('user.list');
+        expect(body.users).to.be.an('array');
+        // console.dir(body);
         done();
       });
     });
@@ -25,7 +25,9 @@ describe('Intercom Users', function() {
         "last_seen_ip" : "1.2.3.4",
         "last_seen_user_agent" : "ie6"
       }, function(code, body) {
-        // console.log(code + ': ' + body.toString());
+        expect(body).to.be.an('object');
+        expect(body.type).to.be.equal('user');
+        // console.dir(body);
         done();
       });
     });
@@ -34,7 +36,9 @@ describe('Intercom Users', function() {
   describe('#intercom.users.get()', function() {
     it('should return an object of a single user by email', function(done) {
       intercom.users.get("brandon@brandonb.io", function(code, body) {
-        // console.log(code + ': ' + body.toString());
+        expect(body).to.be.an('object');
+        expect(body.type).to.be.equal('user');
+        // console.dir(body);
         done();
       });
     });
@@ -46,7 +50,9 @@ describe('Intercom Users', function() {
         "email" : "brandon@brandonb.io",
         "name" : "Brandon Brown"
       }, function(code, body) {
-        // console.log(code + ': ' + body.toString());
+        expect(body).to.be.an('object');
+        expect(body.type).to.be.equal('user');
+        // console.dir(body);
         done();
       });
     });
@@ -57,7 +63,9 @@ describe('Intercom Users', function() {
       intercom.users.delete({
         "email": "brandon@brandonb.io"
       }, function(code, body) {
-        // console.log(code + ': ' + body.toString());
+        expect(body).to.be.an('object');
+        expect(body.type).to.be.equal('user');
+        // console.dir(body);
         done();
       });
     });

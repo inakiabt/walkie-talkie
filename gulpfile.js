@@ -1,5 +1,4 @@
 var gulp        = require('gulp');
-var bump        = require('gulp-bump');
 var git         = require('gulp-git');
 var mocha       = require('gulp-mocha');
 var jshint      = require('gulp-jshint');
@@ -20,13 +19,7 @@ gulp.task('mocha', ['lint'],  function() {
     .pipe(mocha({ reporter: 'spec' }));
 });
 
-gulp.task('bump-version', function() {
-  return gulp.src(['./package.json'])
-    .pipe(bump())
-    .pipe(gulp.dest('./'));
-});
-
-gulp.task('tag', ['bump-version'], function() {
+gulp.task('tag', function() {
   var pkg     = require('./package.json');
   var v       = 'v' + pkg.version;
   var message = 'Release ' + v;

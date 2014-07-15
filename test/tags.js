@@ -49,9 +49,9 @@ describe('Intercom Tags', function() {
 
   describe('#intercom.tags.delete()', function() {
     it('should delete a tag by id', function(done) {
-      intercom.tags.delete(tag_id, function(code, body) {
+      intercom.tags.delete(tag_id, function(code) {
         expect(code).to.be.equal(200);
-        // console.dir(body);
+        // console.dir(code);
         done();
       });
     });
