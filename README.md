@@ -65,6 +65,8 @@ then you can run the tests
 
 ## License
 
+This is a fork of the original project located [here](https://github.com/silentrob/node-intercom). The copyright and license has been maintained.
+
 Copyright 2012 Chloi Inc.
 All rights reserved.
 
