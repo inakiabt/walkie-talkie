@@ -217,6 +217,29 @@ exports.app = function(config) {
           }
         });
       }
+    },
+
+    events: {
+      create: function(data, cb) {
+        var args = {
+          "method": "POST",
+          "url": gen_api_url("events"),
+          "headers": {
+            "Authorization": sign(),
+            "Content-type": "application/json"
+          },
+          "body": JSON.stringify(data)
+        };
+
+        return request(args, function(e, r, body) {
+          if(e) {
+            console.dir('event create failed with error: ' + JSON.stringify(e));
+            cb(null, null, null);
+          } else {
+            cb(r.statusCode);
+          }
+        });
+      }
     }
   };
 };

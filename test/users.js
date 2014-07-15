@@ -19,10 +19,10 @@ describe('Intercom Users', function() {
   describe('#intercom.users.create()', function() {
     it('should create a new user', function(done) {
       intercom.users.create({
-        "email" : "brandon@brandonb.io",
-        "name" : "Test McTesterson",
-        "created_at" : (new Date() / 1000),
-        "last_seen_ip" : "1.2.3.4",
+        "email"                : "brandon@brandonb.io",
+        "name"                 : "Test McTesterson",
+        "created_at"           : (new Date() / 1000),
+        "last_seen_ip"         : "1.2.3.4",
         "last_seen_user_agent" : "ie6"
       }, function(code, body) {
         expect(body).to.be.an('object');
