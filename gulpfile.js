@@ -32,16 +32,15 @@ gulp.task('tag', ['bump-version'], function() {
   var message = 'Release ' + v;
 
   return gulp.src('./')
-    .pipe(git.commit(message))
-    .pipe(git.tag(v, message))
-    .pipe(git.push('origin', 'master', '--tags'))
-    .pipe(gulp.dest('./'));
+    .pipe(git.commit(message));
+    git.tag(v, message);
+    git.push('origin', 'master', { args: ' --tags' }).end();
 });
 
 gulp.task('npm', ['tag'], function(done) {
-  return require('child_process')
-    .spawn('npm', ['publish'], { stdio: 'inherit' })
-    .on('close', done);
+  var spawn = require('child_process').spawn;
+  spawn('npm', ['publish'], { stdio: 'inherit' }).on('close', done);
+  spawn.on('exit', function(code) {});
 });
 
 gulp.task('test', ['lint', 'mocha']);
