@@ -28,6 +28,8 @@ OR if you just want to start playing with the library in your project, run
 
 ## API Overview
 
+Basic implementation requires the following code
+
     var settings = {
       "api_key": "your_API_key",
       "app_id": "your_APP_ID"
@@ -35,10 +37,27 @@ OR if you just want to start playing with the library in your project, run
 
     var intercom = require('walkie-talkie').app(settings);
 
-    intercom.users.get('test@example.com',function(code, body){
-        // code is the Request Status Code from the API
-        // body is the Response Body as a Buffer.
-        console.log(code, body.toString());
+Walkie-Talkie supports the following Intercom.io API methods:
+
+- Users (intercom.users)
+    + intercom.users.all([args, callback])
+    + intercom.users.get(email_or_id, [callback])
+    + intercom.users.create(Object, [callback])
+    + intercom.users.update(Object, [callback])
+    + intercom.users.delete(email_or_id, [callback])
+- Tags (intercom.tags)
+    + intercom.tags.all([args, callback])
+    + intercom.tags.get(tag, [callback])
+    + intercom.tags.create(tag, [callback])
+    + intercom.tags.update(Object, [callback])
+    + intercom.tags.delete(tag, [callback])
+
+To implement Walkie-Talkie, this is the basic method to get data for a user by email
+
+    intercom.users.get('test@example.com', function(code, body) {
+        // code is the request status code from the API
+        // body is the response body as a JSON object
+        console.log(code, body);
     });
 
 See the tests folder for more examples.
