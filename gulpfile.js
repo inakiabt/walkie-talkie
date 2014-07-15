@@ -5,6 +5,10 @@ var jshint      = require('gulp-jshint');
 var stylish     = require('jshint-stylish');
 var spawn       = require('child_process').spawn;
 
+// for gulp-git
+var v       = 'v' + require('./package.json').version;
+var message = 'Release ' + v;
+
 gulp.task('default', function() {
   // Do something here
 });
@@ -20,17 +24,16 @@ gulp.task('mocha', ['lint'],  function() {
     .pipe(mocha({ reporter: 'spec' }));
 });
 
-gulp.task('tag', function() {
-  var pkg     = require('./package.json');
-  var v       = 'v' + pkg.version;
-  var message = 'Release ' + v;
+gulp.task('commit', function() {
+  return gulp.src('./').pipe(git.commit(message));
+});
 
-  return gulp.src('./').pipe(git.commit(message))
-    .pipe(git.tag(v, message));
+gulp.task('tag', ['commit'], function() {
+  return git.tag(v, message);
 });
 
 gulp.task('push', ['tag'], function() {
-  return git.push('origin', 'master', { args: ' --tags' }).end();
+  git.push('origin', 'master', { args: ' --tags' }).end();
 });
 
 gulp.task('npm', ['push'], function(done) {
@@ -39,5 +42,4 @@ gulp.task('npm', ['push'], function(done) {
 
 gulp.task('test', ['mocha']);
 
-gulp.task('release', ['push']);
-// gulp.task('release', ['npm']);
+gulp.task('release', ['npm']);
