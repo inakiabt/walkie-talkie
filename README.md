@@ -1,4 +1,4 @@
-# Node Intercom
+# Walkie-Talkie
 
 An interface for speaking to intercom.io API. There complete docs can be found here - http://docs.intercom.io/api
 
@@ -13,17 +13,17 @@ information...
       "name": "yourapplication",
       "version": "0.1.0",
       "dependencies": {
-        "node-intercom": "0.0.7"
+        "walkie-talkie": "0.0.7"
       }
     }
 
 Then run the following command using `npm`
 
-    npm install && npm install mocha gulp -g
+    npm install && npm install -g mocha gulp
 
 OR if you just want to start playing with the library in your project, run
 
-    npm install node-intercom
+    npm install walkie-talkie
 
 
 ## API Overview
@@ -33,7 +33,7 @@ OR if you just want to start playing with the library in your project, run
       "app_id": "your_APP_ID"
     }
 
-    var intercom = require('node-intercom').app(settings);
+    var intercom = require('walkie-talkie').app(settings);
 
     intercom.users.get('test@example.com',function(code, body){
         // code is the Request Status Code from the API
