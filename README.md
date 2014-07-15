@@ -53,9 +53,14 @@ then you can run the tests
     gulp test
 
 
-## Missing or TODO
+## TODO
 
-- Impressions API
+- Companies
+- Admins
+- Segments
+- Notes
+- Counts
+- Conversations
 
 
 ## License
