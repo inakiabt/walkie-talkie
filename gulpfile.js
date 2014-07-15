@@ -32,9 +32,9 @@ gulp.task('tag', function() {
 gulp.task('npm', ['tag'], function(done) {
   var spawn = require('child_process').spawn;
   spawn('npm', ['publish'], { stdio: 'inherit' }).on('close', done);
-  spawn.on('exit', function(code) {});
 });
 
 gulp.task('test', ['mocha']);
 
-gulp.task('release', ['npm']);
+gulp.task('release', ['tag']);
+// gulp.task('release', ['npm']);
