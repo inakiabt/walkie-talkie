@@ -1,42 +1,59 @@
 var config    = require('./config.json');
 var intercom  = require("../intercom").app(config.settings);
-var should    = require('chai').should();
+var expect    = require('chai').expect;
 
 describe('Intercom Tags', function() {
 
   var tag_id = null;
 
-  it('returns a list of all tags', function() {
-    intercom.tags.all(function(code, body) {
-      console.log(code + ': ' + body);
+  describe('#intercom.tags.all()', function() {
+    it('should return a list of all tags', function(done) {
+      intercom.tags.all(function(code, body) {
+        expect(body.type).to.be.a('string');
+        expect(body.tags).to.be.an('array');
+        // console.dir(body);
+        done();
+      });
     });
   });
 
-  it('returns an object of a single tag by name', function() {
-    intercom.tags.get("social media", function(code, body) {
-      console.log(code + ': ' + body);
+  describe('#intercom.tags.create()', function() {
+    it('should create a new tag', function(done) {
+      intercom.tags.create({
+        "name": "social media"
+      }, function(code, body) {
+        expect(body).to.be.an('object');
+        expect(body.id).to.be.an('string');
+        expect(body.name).to.be.an('string');
+        // console.dir(body);
+        tag_id = body.id;
+        done();
+      });
     });
   });
 
-  it('creates a tag and returns a response', function() {
-    intercom.tags.create("social media", function(code, body) {
-      console.log(code + ': ' + body);
-      tag_id = body.id;
+  describe('#intercom.tags.update()', function() {
+    it('should update a tag by id', function(done) {
+      intercom.tags.update({
+        "id"   : tag_id,
+        "name" : "test tag",
+      }, function(code, body) {
+        expect(body).to.be.an('object');
+        expect(body.id).to.be.an('string');
+        expect(body.name).to.be.an('string');
+        // console.dir(body);
+        done();
+      });
     });
   });
 
-  it('updates a tag and returns a response', function() {
-    intercom.tags.update({
-      "id"   : tag_id,
-      "name" : "test tag",
-    }, function(code, body) {
-      console.log(code + ': ' + body);
-    });
-  });
-
-  it('deletes a tag by the id and returns a response', function() {
-    intercom.tags.delete("test tag", function(code, body) {
-      console.log(code + ': ' + body);
+  describe('#intercom.tags.delete()', function() {
+    it('should delete a tag by id', function(done) {
+      intercom.tags.delete(tag_id, function(code, body) {
+        expect(code).to.be.equal(200);
+        // console.dir(body);
+        done();
+      });
     });
   });
 
