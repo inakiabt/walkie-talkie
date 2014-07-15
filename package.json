@@ -1,6 +1,6 @@
 {
   "name": "walkie-talkie",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "An Intercom.io interface for nodejs",
   "keywords": [
     "intercom.io",
@@ -31,11 +31,12 @@
   },
   "devDependencies": {
     "chai": "*",
-    "mocha": "*",
     "gulp": "^3.8.6",
+    "gulp-git": "^0.4.3",
     "gulp-jshint": "^1.7.1",
     "gulp-mocha": "^0.5.1",
     "jshint": "^2.5.2",
-    "jshint-stylish": "^0.4.0"
+    "jshint-stylish": "^0.4.0",
+    "mocha": "*"
   }
 }
