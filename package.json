@@ -33,7 +33,6 @@
     "chai": "*",
     "mocha": "*",
     "gulp": "^3.8.6",
-    "gulp-git": "^0.4.3",
     "gulp-jshint": "^1.7.1",
     "gulp-mocha": "^0.5.1",
     "jshint": "^2.5.2",
