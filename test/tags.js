@@ -19,7 +19,7 @@ describe('Intercom Tags', function() {
   });
 
   it('creates a tag and returns a response', function() {
-    intercom.tags.create("social Media", function(code, body) {
+    intercom.tags.create("social media", function(code, body) {
       console.log(code + ': ' + body);
       tag_id = body.id;
     });
@@ -28,14 +28,14 @@ describe('Intercom Tags', function() {
   it('updates a tag and returns a response', function() {
     intercom.tags.update({
       "id"   : tag_id,
-      "name" : "social media",
+      "name" : "test tag",
     }, function(code, body) {
       console.log(code + ': ' + body);
     });
   });
 
   it('deletes a tag by the id and returns a response', function() {
-    intercom.tags.delete("", function(code, body) {
+    intercom.tags.delete("test tag", function(code, body) {
       console.log(code + ': ' + body);
     });
   });

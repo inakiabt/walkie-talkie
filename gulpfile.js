@@ -4,7 +4,6 @@ var git         = require('gulp-git');
 var mocha       = require('gulp-mocha');
 var jshint      = require('gulp-jshint');
 var stylish     = require('jshint-stylish');
-var runSequence = require('run-sequence');
 
 gulp.task('default', function() {
   // Do something here
@@ -45,8 +44,6 @@ gulp.task('npm', ['tag'], function(done) {
     .on('close', done);
 });
 
-gulp.task('test', function() {
-  runSequence('lint', 'mocha');
-});
+gulp.task('test', ['lint', 'mocha']);
 
 gulp.task('release', ['npm']);
