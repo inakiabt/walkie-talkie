@@ -15,9 +15,9 @@ gulp.task('lint', function() {
     .pipe(jshint.reporter(stylish));
 });
 
-gulp.task('mocha', function() {
+gulp.task('mocha', ['lint'],  function() {
   return gulp.src(['./intercom.js', 'test/*.js'])
-    .pipe(mocha({ reporter: 'nyan' }));
+    .pipe(mocha({ reporter: 'spec' }));
 });
 
 gulp.task('bump-version', function() {
@@ -31,10 +31,9 @@ gulp.task('tag', ['bump-version'], function() {
   var v       = 'v' + pkg.version;
   var message = 'Release ' + v;
 
-  return gulp.src('./')
-    .pipe(git.commit(message));
-    git.tag(v, message);
-    git.push('origin', 'master', { args: ' --tags' }).end();
+  gulp.src('./').pipe(git.commit(message));
+  git.tag(v, message);
+  return git.push('origin', 'master', { args: ' --tags' }).end();
 });
 
 gulp.task('npm', ['tag'], function(done) {
@@ -43,6 +42,6 @@ gulp.task('npm', ['tag'], function(done) {
   spawn.on('exit', function(code) {});
 });
 
-gulp.task('test', ['lint', 'mocha']);
+gulp.task('test', ['mocha']);
 
 gulp.task('release', ['npm']);
