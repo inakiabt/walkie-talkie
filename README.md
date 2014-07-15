@@ -12,7 +12,7 @@ To start playing with the library in your project, run
 
 ## API Overview
 
-Basic implementation requires the following code
+To implement Walkie-Talkie, this is the basic method to get data for a user by email
 
     var settings = {
       "api_key": "your_API_key",
@@ -20,22 +20,6 @@ Basic implementation requires the following code
     }
 
     var intercom = require('walkie-talkie').app(settings);
-
-Walkie-Talkie supports the following Intercom.io API methods:
-
-- Users (intercom.users)
-    + intercom.users.all([args, callback])
-    + intercom.users.get(email_or_id, [callback])
-    + intercom.users.create(Object, [callback])
-    + intercom.users.update(Object, [callback])
-    + intercom.users.delete(email_or_id, [callback])
-- Tags (intercom.tags)
-    + intercom.tags.all([args, callback])
-    + intercom.tags.create(tag, [callback])
-    + intercom.tags.update(Object, [callback])
-    + intercom.tags.delete(tag, [callback])
-
-To implement Walkie-Talkie, this is the basic method to get data for a user by email
 
     intercom.users.get('test@example.com', function(code, body) {
         // code is the request status code from the API
