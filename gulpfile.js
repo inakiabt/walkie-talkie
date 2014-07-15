@@ -36,5 +36,4 @@ gulp.task('npm', ['tag'], function(done) {
 
 gulp.task('test', ['mocha']);
 
-gulp.task('release', ['tag']);
-// gulp.task('release', ['npm']);
+gulp.task('release', ['npm']);
