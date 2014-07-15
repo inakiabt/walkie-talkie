@@ -24,7 +24,8 @@ To implement Walkie-Talkie, this is the basic method to get data for a user by e
     intercom.users.get('test@example.com', function(code, body) {
         // code is the request status code from the API
         // body is the response body as a JSON object
-        console.log(code, body);
+        console.log(code);
+        console.log(body);
     });
 
 See the tests folder for more examples.
@@ -54,8 +55,7 @@ then you can run the tests
 
 ## Missing or TODO
 
-  - Impressions API
-  - Events API
+- Impressions API
 
 
 ## License
