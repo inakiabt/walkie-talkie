@@ -1,6 +1,6 @@
 {
   "name": "walkie-talkie",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "description": "An Intercom.io interface for nodejs",
   "keywords": [
     "intercom.io",

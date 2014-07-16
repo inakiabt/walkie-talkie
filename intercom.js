@@ -1,4 +1,5 @@
 var request = require("request");
+var qs      = require("querystring");
 
 
 exports.app = function(config) {
@@ -237,6 +238,42 @@ exports.app = function(config) {
             cb(null, null, null);
           } else {
             cb(r.statusCode);
+          }
+        });
+      }
+    },
+
+    counts: {
+      get: function(data, cb) {
+        var url;
+
+        if(arguments.length === 1) {
+          if(Object.prototype.toString.call(data) === "[object Function]") {
+            // No data object, data is the callback here
+            cb = data;
+            // No data supplied, global app counts will be return
+            url = gen_api_url("counts");
+          }
+        } else {
+          url = gen_api_url("counts?" + qs.stringify(data));
+        }
+
+        var args = {
+          "method": "GET",
+          "url": url,
+          "headers": {
+            "Authorization": sign(),
+            "Accept": "application/json",
+            "Content-type": "application/json"
+          }
+        };
+
+        return request(args, function(e, r, body) {
+          if(e) {
+            console.dir('event create failed with error: ' + JSON.stringify(e));
+            cb(null, null, null);
+          } else {
+            cb(r.statusCode, body);
           }
         });
       }

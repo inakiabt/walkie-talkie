@@ -59,7 +59,6 @@ then you can run the tests
 - Admins
 - Segments
 - Notes
-- Counts
 - Conversations
 
 
