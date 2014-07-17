@@ -5,9 +5,6 @@ var jshint      = require('gulp-jshint');
 var stylish     = require('jshint-stylish');
 var spawn       = require('child_process').spawn;
 
-// for gulp-git
-var v       = 'v' + require('./package.json').version;
-var message = 'Release ' + v;
 
 gulp.task('default', function() {
   // Do something here
@@ -24,12 +21,8 @@ gulp.task('mocha', ['lint'],  function() {
     .pipe(mocha({ reporter: 'spec' }));
 });
 
-gulp.task('commit', function() {
-  return gulp.src('./').pipe(git.commit(message));
-});
-
-gulp.task('tag', ['commit'], function() {
-  return git.tag(v, message);
+gulp.task('tag', function() {
+  return git.tag('v' + require('./package.json').version);
 });
 
 gulp.task('push', ['tag'], function() {
