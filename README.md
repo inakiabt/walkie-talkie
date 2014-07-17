@@ -1,6 +1,8 @@
 # Walkie-Talkie
+### An interface for speaking to intercom.io API.
 
-An interface for speaking to intercom.io API. There complete docs can be found here - http://doc.intercom.io/api/
+Walkie-Talkie is a fork of the original project [node-intercom](https://github.com/silentrob/node-intercom) developed by [Rob Ellis](https://github.com/silentrob).
+I used the original project as a basis to further develop my nodeJS skills and contribute back to the Open Source community. We also use Walkie-Talkie internally for [Postach.io](http://postach.io) for recording events and user conversation management.
 
 
 ## Installation
@@ -28,7 +30,8 @@ To implement Walkie-Talkie, this is the basic method to get data for a user by e
         console.log(body);
     });
 
-See the tests folder for more examples on usage.
+See the tests folder for more examples on usage. The Intercom.io complete docs can be found here - http://doc.intercom.io/api/
+
 
 ## Contributing and Testing
 
