@@ -28,18 +28,19 @@ To implement Walkie-Talkie, this is the basic method to get data for a user by e
         console.log(body);
     });
 
-See the tests folder for more examples.
+See the tests folder for more examples on usage.
 
 ## Contributing and Testing
 
-Contributing bug fixes and features is very welcome! If you want to contribute to the project, you'll need to run create and run tests for anything that needs it.
-and Mocha is used for testing so add your tests to the `test` folder, but first you'll need to create a `config.json` file in the root of the tests folder and fill it with your credentials.
+Contributing bug fixes and features is very welcome! If you want to contribute to the project, you'll need to create and run tests for anything you add that needs it.
 
-Run
+Mocha is used for testing so add your tests to the `test` folder, but first you'll need to create a `config.json` file in the root of the tests folder and fill it with your credentials.
+
+Start by installing the project dependencies by running
 
     npm install && npm install -g mocha gulp
 
-then create your `config.json` in the `test` folder
+then create your `config.json` in the `test` folder.
 
     {
       "settings": {
@@ -48,7 +49,7 @@ then create your `config.json` in the `test` folder
       }
     }
 
-then you can run the tests
+Now you can finally run the tests.
 
     gulp test
 
