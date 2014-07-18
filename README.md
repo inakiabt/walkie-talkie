@@ -61,7 +61,6 @@ Now you can finally run the tests.
 
 - Companies
 - Admins
-- Segments
 - Notes
 - Conversations
 
