@@ -263,17 +263,58 @@ exports.app = function(config) {
           "url": url,
           "headers": {
             "Authorization": sign(),
-            "Accept": "application/json",
-            "Content-type": "application/json"
+            "Accept": "application/json"
           }
         };
 
         return request(args, function(e, r, body) {
           if(e) {
-            console.dir('event create failed with error: ' + JSON.stringify(e));
+            console.dir('counts get failed with error: ' + JSON.stringify(e));
             cb(null, null, null);
           } else {
-            cb(r.statusCode, body);
+            cb(r.statusCode, JSON.parse(body));
+          }
+        });
+      }
+    },
+
+    segments: {
+      get_all: function(cb) {
+        var args = {
+          "method": "GET",
+          "url": gen_api_url("segments"),
+          "headers": {
+            "Authorization": sign(),
+            "Accept": "application/json"
+          }
+        };
+
+        return request(args, function(e, r, body) {
+          if(e) {
+            console.dir('segments get all failed with error: ' + JSON.stringify(e));
+            cb(null, null, null);
+          } else {
+            cb(r.statusCode, JSON.parse(body));
+          }
+        });
+      },
+
+      get: function(segment_id, cb) {
+        var args = {
+          "method": "GET",
+          "url": gen_api_url("segments/" + segment_id),
+          "headers": {
+            "Authorization": sign(),
+            "Accept": "application/json"
+          }
+        };
+
+        return request(args, function(e, r, body) {
+          if(e) {
+            console.dir('segments get failed with error: ' + JSON.stringify(e));
+            cb(null, null, null);
+          } else {
+            cb(r.statusCode, JSON.parse(body));
           }
         });
       }

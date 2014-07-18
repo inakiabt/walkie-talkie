@@ -9,7 +9,7 @@ describe('Intercom Counts', function() {
       intercom.counts.get(function(code, body) {
         expect(body.type).to.be.a('string');
         expect(body.type).to.equal('count.hash');
-        // console.dir(body);
+        // console.dir(body.type);
         done();
       });
     });
