@@ -318,6 +318,49 @@ exports.app = function(config) {
           }
         });
       }
+    },
+    conversations: {
+      user: function(user_id_or_email, cb) {
+        var key = (user_id_or_email.indexOf("@") == -1) ? "user_id" : "email";
+
+        var args = {
+          "method": "GET",
+          "url": "https://api.intercom.io/conversations/?type=user&"+ key + "=" + user_id_or_email,
+          "headers": { "Authorization": sign(), "Accept": "application/json" } 
+        }
+
+        var conversations = [];
+        var handle = function(e, r, body){
+          if (e) {
+            cb(null, null, null);
+          } else {
+            var rsp = JSON.parse(body);
+            rsp.conversations.forEach(function(c) { conversations.push(c);});
+            if (rsp.pages.next) {
+                args.url = 'https://api.intercom.io' + rsp.pages.next;
+                request(args, handle);
+            } else {
+                cb(r.statusCode, conversations);
+            }
+          }
+        };
+
+        return request(args, handle);
+      },
+      get: function(id, cb) {
+        var args = {
+          "method": "GET",
+          "url": "https://api.intercom.io/conversations/"+id,
+          "headers": { "Authorization": sign(), "Accept": "application/json" } 
+        }
+        return request(args, function(e, r, body){
+          if (e) {
+            cb(null, null, null);
+          } else {
+            cb(r.statusCode, body);
+          }
+        });
+      }
     }
   };
 };
