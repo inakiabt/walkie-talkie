@@ -1,4 +1,4 @@
-# Walkie-Talkie
+# Walkie-Talkie [Adapted for Parse Cloud Code]
 ### An interface for speaking to intercom.io API.
 
 Walkie-Talkie is a fork of the original project [node-intercom](https://github.com/silentrob/node-intercom) developed by [Rob Ellis](https://github.com/silentrob).

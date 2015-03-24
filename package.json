@@ -26,9 +26,6 @@
       "url": "https://raw.github.com/brandonb927/walkie-talkie/master/README.md"
     }
   ],
-  "dependencies": {
-    "request": "^2.37.0"
-  },
   "devDependencies": {
     "chai": "*",
     "gulp": "^3.8.6",
