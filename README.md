@@ -7,9 +7,7 @@ I used the original project as a basis to further develop my nodeJS skills and c
 
 ## Installation
 
-To start playing with the library in your project, run
-
-    npm install walkie-talkie --save
+Clone this repo and copy `intercom.js` file to your `cloud/` folder.
 
 
 ## API Overview
@@ -21,19 +19,25 @@ To implement Walkie-Talkie, this is the basic method to get data for a user by e
       "app_id": "your_APP_ID"
     }
 
-    var intercom = require('walkie-talkie').app(settings);
+    var intercom = require('cloud/intercom').app(settings);
 
-    intercom.users.get('test@example.com', function(code, body) {
-        // code is the request status code from the API
-        // body is the response body as a JSON object
-        console.log(code);
-        console.log(body);
+    Parse.Cloud.define("test", function(request, response) {
+
+        intercom.users.get('test@example.com', function(code, body) {
+            // code is the request status code from the API
+            // body is the response body as a JSON object
+            console.log(code);
+            console.log(body);
+
+            response.success(body);
+        });
+
     });
 
 See the tests folder for more examples on usage. The Intercom.io complete docs can be found here - http://doc.intercom.io/api/
 
 
-## Contributing and Testing
+## Contributing and Testing [Not mantained]
 
 Contributing bug fixes and features is very welcome! If you want to contribute to the project, you'll need to create and run tests for anything you add that needs it.
 
